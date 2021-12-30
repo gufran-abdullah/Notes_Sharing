@@ -1,0 +1,98 @@
+{% load static %}
+{% block body %}
+{% include 'navigation.html' %}
+<style>
+	header{
+		background: url({% static "images/header2.jpg" %})no-repeat;
+		width: 100%;
+		height: 470px;
+		background-size: cover;
+		background-position: center center;
+		margin-top: 0.5%;
+	}
+	.transp{
+		width: 100%;
+		height: 470px;
+		background-color: lightgrey;
+		opacity: 0.5;
+		border:1px solid #0d6efd;
+	}
+	.transp p{
+		text-align: center;
+		font-size: 60px;
+		font-weight: bold;
+		font-family: Monotype Corsiva;
+		margin-top: 14%;
+		color: maroon;
+	}
+	.halfcircle{
+		width: 150px;
+		height: 75px;
+		border-radius: 95px 95px 0px 0px;
+		margin: 0px;
+		background-color: #0d6efd;
+	}
+	.halfcirclebottom{
+		width: 150px;
+		height: 75px;
+		border-radius: 0px 0px 95px 95px;
+		margin: 0px;
+		background-color: darkslategrey;
+	}
+	.box p{
+		text-align: center;
+
+	}
+	.box .boxicon{
+		font-size:60px;
+		color: #fff;
+		margin-top: 8px;
+	}
+	.box .boxtext{
+		color: #fff;
+		font-size: 20px;
+	}
+	#boxesrow{
+		margin: 4% 12%;
+	}
+</style>
+<!--Start Header-->
+<header>
+	<div class="transp">
+		<p>Study Notes Sharing Site</p>
+	</div>
+</header>
+<!--End Header-->
+<!--Start Main Section-->
+<div class="container">
+	<h3 class="text-danger mt-5 text-center">Just 4 Steps To Follow</h3>
+	<div class="row" id="boxesrow">
+		<div class="col-sm-3">
+			<div class="box">
+				<p class="halfcircle"><i class="fas fa-user-plus boxicon"></i></p>
+				<p class="halfcirclebottom boxtext">Create<br>Account</p>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="box">
+				<p class="halfcircle"><i class="fas fa-user-circle boxicon"></i></p>
+				<p class="halfcirclebottom boxtext">User<br>Login</p>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="box">
+				<p class="halfcircle"><i class="fas fa-upload boxicon"></i></p>
+				<p class="halfcirclebottom boxtext">Upload<br>Notes</p>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="box">
+				<p class="halfcircle"><i class="fas fa-download boxicon"></i></p>
+				<p class="halfcirclebottom boxtext">Download<br>Notes</p>
+			</div>
+		</div>
+	</div>
+</div>	
+<!--End Main Section-->
+
+{% endblock %}

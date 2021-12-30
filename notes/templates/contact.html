@@ -1,0 +1,49 @@
+{% load static %}
+{% block body %}
+{% include 'navigation.html' %}
+<style>
+	header{
+		background: url({% static "images/contact.jpg" %})no-repeat;
+		width: 100%;
+		height: 470px;
+		background-size: cover;
+		background-position: center center;
+		margin-top: 0.5%;
+	}
+	.contactimg{
+		width: 100%;
+		height: 340px;
+	}
+</style>
+<!--Start Header-->
+<header>
+</header>
+<!--End Header-->
+<div class="container my-4">
+	<div class="row">
+		<div class="col-sm-6">
+			<img src="{% static "images/contact.png" %}" alt="Contact Us" class="contactimg my-3">
+		</div>
+		<div class="col-sm-6">
+			<form action="" method="POST" class="my-3">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="uname"><strong>Name</strong></label>
+					<input type="text" name="uname" class="form-control" placeholder="Enter your name...">
+				</div>
+				<div class="form-group">
+					<label for="email"><strong>Email</strong></label>
+					<input type="email" name="email" class="form-control" placeholder="Enter your email...">
+				</div>
+				<div class="form-group">
+					<label for="message"><strong>Message</strong></label>
+					<textarea name="message" id="" cols="10" rows="5" placeholder="Enter your message..." class="form-control"></textarea>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Send" class="btn btn-primary my-3">
+				</div>
+			</form>
+		</div>
+	</div>	
+</div>
+{% endblock %}

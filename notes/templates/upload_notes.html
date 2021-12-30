@@ -1,0 +1,93 @@
+{% load static %}
+{% block body %}
+{% include 'user_navigation.html' %}
+<style>
+	.loginimg{
+		width: 100%;
+		height:380px;
+	}
+	marquee{
+		margin-top: 0.5%;
+		background: #0d6efd;
+		color: #fff;
+	}
+</style>
+<marquee direction="left">
+	<h4>Upload Notes</h4>
+</marquee>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6">
+			<img src="{% static "images/header1.jpg" %}" alt="Login Image" class="loginimg my-4">
+		</div>
+		<div class="col-sm-6" style="">
+			<form action="" method="POST" style="margin-top:9%;" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="branch"><strong>Branch</strong></label>
+							<select name="branch" class="form-control">
+								<option>---Please Select Branch---</option>
+								<option value="Computer Science">Computer Science</option>
+								<option value="Software Engineering">Software Engineering</option>
+								<option value="Data Base">Data Base</option>
+								<option value="Electrical">Electrical</option>
+								<option value="Civil">Civil</option>
+								<option value="Mchenical">Mchenical</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="subject"><strong>Subject</strong></label>
+							<input type="text" name="subject" class="form-control" placeholder="Enter subject...">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="notesfile"><strong>Notes file</strong></label>
+							<input type="file" name="notesfile" class="form-control">
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label for="filetype"><strong>File Type</strong></label>
+							<select name="filetype" class="form-control">
+								<option>---Please Select File Type---</option>
+								<option value="PDF">PDF</option>
+								<option value="PPTX">PPTX</option>
+								<option value="DOC/DOCX">DOC/DOCX</option>
+								<option value="TXT">TXT</option>
+								<option value="IMAGE">IMAGE</option>
+								<option value="ZIP/RAR">ZIP/RAR</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="description"><strong>Description</strong></label>
+					<textarea name="description" id="" cols="10" rows="5" placeholder="Enter description here..." class="form-control"></textarea>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Upload Notes" class="btn btn-primary my-2">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% ifequal error "no" %}
+		<script>
+    		alert("Notes Uploaded Successfully!!!");
+			window.location = ('{% url 'user_viewnotes' %}');
+		</script>
+	{% endifequal %}
+
+	{% ifequal error "yes" %}
+		<script>
+  			alert("Something went wrong. Try again!!!");
+		</script>
+	{% endifequal %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% load static %}
+{% block body %}
+{% include 'navigation.html' %}
+<style>
+	header{
+		background: url({% static "images/header1.jpg" %})no-repeat;
+		width: 100%;
+		height: 470px;
+		background-size: cover;
+		background-position: center center;
+		margin-top: 0.5%;
+	}
+	.transp{
+		width: 100%;
+		height: 470px;
+		background-color: lightgrey;
+		opacity: 0.5;
+		border:1px solid #0d6efd;
+	}
+	.transp p{
+		text-align: center;
+		font-size: 60px;
+		font-weight: bold;
+		font-family: Monotype Corsiva;
+		margin-top: 14%;
+		color: maroon;
+	}
+</style>
+<!--Start Header-->
+<header>
+	<div class="transp">
+		<p>About Us</p>
+	</div>
+</header>
+<!--End Header-->
+<div class="container my-4">
+	<h4>Hello Friends...</h4>
+	<p>Lorem, ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente quae, optio nulla ad, officia, praesentium facilis a porro, animi fugit nihil dolore voluptate. Atque, quae, unde. Tempore dolorum laudantium placeat, molestiae pariatur impedit maxime laborum a nobis, excepturi sed officiis, dolor aspernatur deleniti magni perferendis numquam qui asperiores? Temporibus delectus animi cupiditate exercitationem ipsum quis, laudantium, deleniti rerum pariatur saepe sunt id iusto tempore vitae. Magni ex aperiam minima incidunt aut assumenda, fugiat. Commodi adipisci ut quae, aliquam magni ipsa accusamus, molestiae excepturi explicabo, vitae voluptatem officia ad repellendus praesentium autem modi suscipit quaerat inventore repellat optio facilis, quidem.</p>
+	<p>Lorem, ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente quae, optio nulla ad, officia, praesentium facilis a porro, animi fugit nihil dolore voluptate. Atque, quae, unde. Tempore dolorum laudantium placeat, molestiae pariatur impedit maxime laborum a nobis, excepturi sed officiis, dolor aspernatur deleniti magni perferendis numquam qui asperiores? Temporibus delectus animi cupiditate exercitationem ipsum quis, laudantium, deleniti rerum pariatur saepe sunt id iusto tempore vitae. Magni ex aperiam minima incidunt aut assumenda, fugiat. Commodi adipisci ut quae, aliquam magni ipsa accusamus, molestiae excepturi explicabo, vitae voluptatem officia ad repellendus praesentium autem modi suscipit quaerat inventore repellat optio facilis, quidem.</p>	
+</div>
+{% endblock %}

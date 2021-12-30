@@ -1,0 +1,49 @@
+{% load static %}
+{% block body %}
+{% include 'admin_navigation.html' %}
+<style>
+	marquee{
+		margin-top: 0.5%;
+		background: #0d6efd;
+		color: #fff;
+	}
+</style>
+<marquee direction="left">
+	<h4>Change Notes Status</h4>
+</marquee>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-6" style="margin:3% auto;">
+			<form action="" method="POST">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="notesid"><strong>Notes File</strong></label>
+					<input type="text" name="notesid" class="form-control" value="{{notes.notesfile}}" disabled>
+				</div>
+				<div class="form-group">
+					<label for="changestatus"><strong>Change Status</strong></label>
+					<select name="changestatus" class="form-control">
+						<option value="Accepted">Accepted</option>
+						<option value="Rejected">Rejected</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<input type="submit" class="btn btn-primary my-2" value="Change">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% ifequal error "no" %}
+		<script>
+    		alert("Status Changed Successfully!!!");
+			window.location = ('{% url 'all_notes' %}');
+		</script>
+	{% endifequal %}
+
+	{% ifequal error "yes" %}
+		<script>
+  			alert("Something went wrong. Try again!!!");
+		</script>
+	{% endifequal %}
+{% endblock %}

@@ -1,0 +1,104 @@
+{% load static %}
+{% block body %}
+{% include 'user_navigation.html' %}
+<link rel="stylesheet" type="text/css" href="{% static "datatable/datatables.min.css" %}"/>
+<script type="text/javascript" src="{% static "datatable/datatables.min.js" %}"></script>
+<style>
+	marquee{
+		margin-top: 0.5%;
+		background: #0d6efd;
+		color: #fff;
+	}
+	.table_head{
+		background: #0d6efd;
+		color: #fff;
+	}
+	.del_icon{
+		color: #0d6efd;
+		font-size: 20px;
+		margin-left:5px;
+	}
+	.del_icon:hover{
+		color: red;
+	}
+	.btn-group{
+		position: relative;
+		top: 32px;
+	}
+	.buttons-html5,.buttons-print{
+		background: #0d6efd;
+		color: #fff;
+		border:none;
+	}
+	.buttons-html5:hover,.buttons-print:hover{
+		background: #0d6efd;
+		color: #fff;
+	}
+	.dataTables_length{
+		position: relative;
+		top: 20px;
+	}
+
+</style>
+<marquee direction="left">
+	<h4>View All Notes</h4>
+</marquee>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-hover" id="example">
+				<thead>
+					<tr class="table_head">
+						<th>Sr.#</th>
+						<th>Uploaded By</th>
+						<th>Uploading Date</th>
+						<th>Branch</th>
+						<th>Subject</th>
+						<th>Download Notes</th>
+						<th>File Type</th>
+						<th>Description</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for n in data %}
+
+					<tr>
+						<td>{{forloop.counter}}</td>
+						<td>{{n.user.username}}</td>
+						<td>{{n.upload_date}}</td>
+						<td>{{n.branch}}</td>
+						<td>{{n.subject}}</td>
+						{% if n.notesfile %}
+							<td><a href="{{n.notesfile.url}}" download>Download</a></td>
+						{% else %}
+							<td>Not Uploaded</td>
+						{% endif %}
+						<td>{{n.filetype}}</td>
+						<td>{{n.description}}</td>
+						{% if n.status == "Accepted" %}
+							<td class="text-success"><strong>{{n.status}}</strong></td>
+						{% elif n.status == "Rejected" %}
+							<td class="text-danger"><strong>{{n.status}}</strong></td>
+						{% else %}
+							<td class="text-warning"><strong>{{n.status}}</strong></td>
+						{% endif %}	
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function(){
+	$('#example').DataTable({
+		dom: 'lBfrtip',
+		buttons: [
+			'copy','csv','excel','pdf','print'
+		]
+	});
+	});
+</script>
+{% endblock %}

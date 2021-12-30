@@ -1,0 +1,92 @@
+{% load static %}
+{% block body %}
+{% include 'admin_navigation.html' %}
+<style>
+	.notescard{
+		border-left:5px solid  #0d6efd;
+		background: linear-gradient(60deg,lightgrey,#0d6efd);
+	}
+	.notescard h3,h4,a{
+		color: #fff;
+		text-decoration: none;
+	}
+	.notescard:hover{
+		transform: translateY(-10px);
+		box-shadow: 5px 5px 5px rgba(13,110,253,0.6);
+		transition:0.3s ease;
+	}
+	.footerpara{
+		font-size: 30pt;
+		font-weight: bold;
+		color: red;
+		text-align: center;
+	}
+	.glow{
+		font-size: 60px;
+		color: #fff;
+		text-align: center;
+		-webkit-animation: glow 1s ease-in-out infinite alternate;
+	}
+	@-webkit-keyframes glow{
+		from{
+			text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+		}
+		to{
+			text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6; 
+		}
+	}
+</style>
+<div class="container">
+	<div class="row my-5">
+		<div class="col-sm-3">
+			<div class="card notescard">
+				<div class="card-body">
+					<h3>{{pending_notes}}</h3>
+					<a href="{% url 'pending_notes' %}"><h4>Pending Notes</h4></a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="card notescard">
+				<div class="card-body">
+					<h3>{{accepted_notes}}</h3>
+					<a href="{% url 'accepted_notes' %}"><h4>Accpeted Notes</h4></a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="card notescard">
+				<div class="card-body">
+					<h3>{{rejected_notes}}</h3>
+					<a href="{% url 'rejected_notes' %}"><h4>Rejected Notes</h4></a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="card notescard">
+				<div class="card-body">
+					<h3>{{all_notes}}</h3>
+					<a href="{% url 'all_notes' %}"><h4>All Notes</h4></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container mt-5">
+	<footer>
+		<p class="footerpara">
+			Copyright &copy; 
+			<script>
+				document.write(new Date().getFullYear());	
+			</script>
+			All Rights Reserved <span style="color:brown;">|</span>
+			<span style="color:#006400;">
+				This Web Application is Made With
+				<i class="fas fa-heart text-warning"></i>
+				By <br>
+				<span class="glow">Mohammad Gufran Abdullah</span>
+			</span> 
+		</p>
+	</footer>
+</div>
+{% endblock %}
